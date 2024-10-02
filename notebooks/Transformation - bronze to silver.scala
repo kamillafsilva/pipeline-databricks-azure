@@ -48,8 +48,8 @@ display(endereco.limit(5))
 val ANUNCIO_FILE = "dataset_anuncio"
 val ENDERECO_FILE = "dataset_endereco"
 
-val ANUNCIO_PATH = s"dbfs:$MOUNT_PATH/bronze/$ANUNCIO_FILE"
-val ENDERECO_PATH = s"dbfs:$MOUNT_PATH/bronze/$ENDERECO_FILE"
+val ANUNCIO_PATH = s"dbfs:$MOUNT_PATH/silver/$ANUNCIO_FILE"
+val ENDERECO_PATH = s"dbfs:$MOUNT_PATH/silver/$ENDERECO_FILE"
 
 // COMMAND ----------
 
