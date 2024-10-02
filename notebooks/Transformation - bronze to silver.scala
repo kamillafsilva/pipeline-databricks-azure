@@ -37,19 +37,6 @@ val endereco = bronze_data.select("anuncio_id", "anuncio.endereco.*")
 
 // COMMAND ----------
 
-val numCols = anuncio
-  .withColumn("valores_size", size($"valores"))
-
-// COMMAND ----------
-
-df
-  .select(
-    (0 until numCols).map(i => $"letters".getItem(i).as(s"col$i")): _*
-  )
-  .show()
-
-// COMMAND ----------
-
 display(anuncio.limit(5))
 
 // COMMAND ----------
@@ -58,17 +45,13 @@ display(endereco.limit(5))
 
 // COMMAND ----------
 
-val bronze_data = subset_data.withColumn("anuncio_id", col("anuncio.id"))
+val ANUNCIO_FILE = "dataset_anuncio"
+val ENDERECO_FILE = "dataset_endereco"
+
+val ANUNCIO_PATH = s"dbfs:$MOUNT_PATH/bronze/$ANUNCIO_FILE"
+val ENDERECO_PATH = s"dbfs:$MOUNT_PATH/bronze/$ENDERECO_FILE"
 
 // COMMAND ----------
 
-display(bronze_data.limit(5))
-
-// COMMAND ----------
-
-val BRONZE_FILE = "dataset_building"
-val BRONZE_PATH = s"dbfs:$MOUNT_PATH/bronze/$BRONZE_FILE"
-
-// COMMAND ----------
-
-bronze_data.write.format("delta").mode(SaveMode.Overwrite).save(BRONZE_PATH)
+anuncio.write.format("delta").mode(SaveMode.Overwrite).save(ANUNCIO_PATH)
+endereco.write.format("delta").mode(SaveMode.Overwrite).save(ENDERECO_PATH)
