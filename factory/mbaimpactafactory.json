@@ -1,0 +1,9 @@
+{
+	"name": "mbaimpactafactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0522fc83-d162-4535-a306-a8daeff36b0a",
+		"tenantId": "5c9e059c-3929-4dcd-a2da-b11cd4e8b1d4"
+	}
+}
