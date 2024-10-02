@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mbaimpactafactory"
+		},
+		"mbaimpactapipeline_accessToken": {
+			"value": ""
+		},
+		"mbaimpactapipeline_properties_typeProperties_existingClusterId": {
+			"value": "1002-142800-93uatwkc"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
