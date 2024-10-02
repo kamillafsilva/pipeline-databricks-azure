@@ -1,0 +1,24 @@
+{
+	"name": "trigger-building-pipeline",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "building-ingestion",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2024-10-02T15:50:00",
+				"timeZone": "E. South America Standard Time"
+			}
+		}
+	}
+}
