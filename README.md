@@ -14,7 +14,7 @@ Do contexto acima identificamos que a solução para esse projeto deve conter os
 * Uma ferramenta onde seja possível ler/manipular arquivos JSON e salvar arquivos no formato Delta.
 * Por fim, precisamos de um orquestrador para executar todas as etapas de leitura e transformação automaticamente a cada hora.
 
-  ## Implementação
+## Implementação
   Considerando que a cloud da empresa é a Microsoft Azure, podemos implementar o desenho da solução acima utilizando os seguintes recursos dessa plataforma:
   * Azure Data Lake Gen2: permite a construção e organização de um Data Lake para armazenamento de dados semiestruturados e estruturados. A organização é feita pelo mecanismo de [namespace hierárquico](https://learn.microsoft.com/pt-br/azure/storage/blobs/data-lake-storage-namespace) que possibilita uma hierarquia de diretórios e subdiretórios aninhados. Nesse projeto os subdiretórios correspondem as camadas do Data Lake: Landing, Bronze e Silver.
   * Databricks: possibilita a realização das etapas de leitura, manipulação e escrita dos arquivos de dados nas diferentes camadas do Data Lake do projeto. Essa plataforma se integra com a cloud Azure e nela podemos utilizar as linguagens Spark, Scala ou Python para realizar as transformações solicitadas pelo stakeholder.
