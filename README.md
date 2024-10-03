@@ -5,7 +5,7 @@
 </p>
 
 ## Contexto
-O stakeholder desse projeto possuí uma base de dados composta por vários anúncios de imvóveis no Rio de Janeiro. Esses dados brutos foram disponibilizados no formato JSON e precisam passar por processos de tranformação de dados para atender às necessidades dos analistas de negócio. Entre as transformações solicitadas estão a extração de informações aninhadas no JSON e a conversão dos arquivos para o formato Delta (Parquet). Além disso, novos dados brutos serão recebidos de hora em hora sendo necessária a automatização de todo esse processo.
+O stakeholder desse projeto possuí uma base de dados composta por vários anúncios de imóveis no Rio de Janeiro. Esses dados brutos foram disponibilizados no formato JSON e precisam passar por processos de tranformação de dados para atender às necessidades dos analistas de negócio. Entre as transformações solicitadas estão a extração de informações aninhadas no JSON e a conversão dos arquivos para o formato Delta (Parquet). Além disso, novos dados brutos serão recebidos de hora em hora sendo necessária a automatização de todo esse processo.
 A empresa em questão utiliza a cloud Microsoft Azure então é importante que a solução seja desenvolvida pensando nesse ecossistema.
 
 ## Desenho da solução
