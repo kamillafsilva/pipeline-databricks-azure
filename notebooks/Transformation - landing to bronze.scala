@@ -3,30 +3,20 @@ import org.apache.spark.sql.functions.col
 
 // COMMAND ----------
 
-// MAGIC %md
-// MAGIC # Checking folder
-
-// COMMAND ----------
-
 val MOUNT_NAME = "datalake"
 val MOUNT_PATH = s"/mnt/$MOUNT_NAME"
 
-// COMMAND ----------
-
-display(dbutils.fs.ls(s"$MOUNT_PATH/landing"))
-
-// COMMAND ----------
-
-val FILE = "dados_brutos_imoveis.json"
-val PATH_FILE = s"dbfs:$MOUNT_PATH/landing/$FILE"
+val SOURCE_LAYER = "landing"
+val DESTINATION_LAYER = "bronze"
 
 // COMMAND ----------
 
-val landing_data = spark.read.json(PATH_FILE)
+val SOURCE_FILE = "dados_brutos_imoveis.json"
+val PATH_SOURCE_FILE = s"dbfs:$MOUNT_PATH/$SOURCE_LAYER/$SOURCE_FILE"
 
 // COMMAND ----------
 
-display(landing_data.limit(5))
+val landing_data = spark.read.json(PATH_SOURCE_FILE)
 
 // COMMAND ----------
 
@@ -34,21 +24,13 @@ val subset_data = landing_data.drop("imagens", "usuario")
 
 // COMMAND ----------
 
-display(subset_data.limit(5))
-
-// COMMAND ----------
-
 val bronze_data = subset_data.withColumn("anuncio_id", col("anuncio.id"))
 
 // COMMAND ----------
 
-display(bronze_data.limit(5))
+val DESTINATION_FILE = "dataset_building"
+val PATH_DESTINATION_FILE = s"dbfs:$MOUNT_PATH/$DESTINATION_LAYER/$DESTINATION_FILE"
 
 // COMMAND ----------
 
-val BRONZE_FILE = "dataset_building"
-val BRONZE_PATH = s"dbfs:$MOUNT_PATH/bronze/$BRONZE_FILE"
-
-// COMMAND ----------
-
-bronze_data.write.format("delta").mode(SaveMode.Overwrite).save(BRONZE_PATH)
+bronze_data.write.format("delta").mode(SaveMode.Overwrite).save(PATH_DESTINATION_FILE)

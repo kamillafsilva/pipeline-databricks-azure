@@ -1,34 +1,22 @@
 // Databricks notebook source
 import org.apache.spark.sql.functions.col
-import org.apache.spark.sql.functions.size
-import org.apache.spark.sql.functions.max
-
-// COMMAND ----------
-
-// MAGIC %md
-// MAGIC # Checking folder
 
 // COMMAND ----------
 
 val MOUNT_NAME = "datalake"
 val MOUNT_PATH = s"/mnt/$MOUNT_NAME"
 
-// COMMAND ----------
-
-display(dbutils.fs.ls(s"$MOUNT_PATH/bronze"))
-
-// COMMAND ----------
-
-val FILE = "dataset_building"
-val PATH_FILE = s"dbfs:$MOUNT_PATH/bronze/$FILE"
+val SOURCE_LAYER = "bronze"
+val DESTINATION_LAYER = "silver"
 
 // COMMAND ----------
 
-val bronze_data = spark.read.format("delta").load(PATH_FILE)
+val SOURCE_FILE = "dataset_building"
+val PATH_SOURCE_FILE = s"dbfs:$MOUNT_PATH/$SOURCE_LAYER/$SOURCE_FILE"
 
 // COMMAND ----------
 
-display(bronze_data.limit(5))
+val bronze_data = spark.read.format("delta").load(PATH_SOURCE_FILE)
 
 // COMMAND ----------
 
@@ -37,19 +25,11 @@ val endereco = bronze_data.select("anuncio_id", "anuncio.endereco.*")
 
 // COMMAND ----------
 
-display(anuncio.limit(5))
-
-// COMMAND ----------
-
-display(endereco.limit(5))
-
-// COMMAND ----------
-
 val ANUNCIO_FILE = "dataset_anuncio"
 val ENDERECO_FILE = "dataset_endereco"
 
-val ANUNCIO_PATH = s"dbfs:$MOUNT_PATH/silver/$ANUNCIO_FILE"
-val ENDERECO_PATH = s"dbfs:$MOUNT_PATH/silver/$ENDERECO_FILE"
+val ANUNCIO_PATH = s"dbfs:$MOUNT_PATH/$DESTINATION_LAYER/$ANUNCIO_FILE"
+val ENDERECO_PATH = s"dbfs:$MOUNT_PATH/$DESTINATION_LAYER/$ENDERECO_FILE"
 
 // COMMAND ----------
 
