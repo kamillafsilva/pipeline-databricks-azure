@@ -1,5 +1,9 @@
 # Criando e orquestrando pipelines de dados usando Databricks + Azure
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/0d97b011-ed14-42e4-97bc-f2e1be2f607a"/>
+</p>
+
 ## Contexto
 O stakeholder desse projeto possuí uma base de dados composta por vários anúncios de imvóveis no Rio de Janeiro. Esses dados brutos foram disponibilizados no formato JSON e precisam passar por processos de tranformação de dados para atender às necessidades dos analistas de negócio. Entre as transformações solicitadas estão a extração de informações aninhadas no JSON e a conversão dos arquivos para o formato Delta (Parquet). Além disso, novos dados brutos serão recebidos de hora em hora sendo necessária a automatização de todo esse processo.
 A empresa em questão utiliza a cloud Microsoft Azure então é importante que a solução seja desenvolvida pensando nesse ecossistema.
@@ -15,5 +19,5 @@ Do contexto acima identificamos que a solução para esse projeto deve conter os
   * Azure Data Lake Gen2: permite a construção e organização de um Data Lake para armazenamento de dados semiestruturados e estruturados. A organização é feita pelo mecanismo de [namespace hierárquico](https://learn.microsoft.com/pt-br/azure/storage/blobs/data-lake-storage-namespace) que possibilita uma hierarquia de diretórios e subdiretórios aninhados. Nesse projeto os subdiretórios correspondem as camadas do Data Lake: Landing, Bronze e Silver.
   * Databricks: possibilita a realização das etapas de leitura, manipulação e escrita dos arquivos de dados nas diferentes camadas do Data Lake do projeto. Essa plataforma se integra com a cloud Azure e nela podemos utilizar as linguagens Spark, Scala ou Python para realizar as trasformações solicitadas pelo stakeholder.
   * Data Factory: ferramenta de orquestração que permite o agendamento e execução automática dos notebooks do Databricks onde estão todas as etapas de transformação dos dados.
-  
+
   
